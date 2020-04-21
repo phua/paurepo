@@ -1,0 +1,36 @@
+diff -aur src/idutils-4.6/lib/fseeko.c tst/idutils-4.6/lib/fseeko.c
+--- src/idutils-4.6/lib/fseeko.c	2012-01-28 10:26:04.000000000 -0600
++++ tst/idutils-4.6/lib/fseeko.c	2020-04-20 00:00:00.000000000 -0500
+@@ -40,7 +40,7 @@
+ #endif
+
+   /* These tests are based on fpurge.c.  */
+-#if defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
++#if defined _IO_EOF_SEEN || defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
+   if (fp->_IO_read_end == fp->_IO_read_ptr
+       && fp->_IO_write_ptr == fp->_IO_write_base
+       && fp->_IO_save_base == NULL)
+
+diff -aur src/idutils-4.6/lib/fseterr.c tst/idutils-4.6/lib/fseterr.c
+--- src/idutils-4.6/lib/fseterr.c	2012-01-28 10:22:33.000000000 -0600
++++ tst/idutils-4.6/lib/fseterr.c	2020-04-20 00:00:00.000000000 -0500
+@@ -29,7 +29,7 @@
+   /* Most systems provide FILE as a struct and the necessary bitmask in
+      <stdio.h>, because they need it for implementing getc() and putc() as
+      fast macros.  */
+-#if defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
++#if defined _IO_EOF_SEEN || defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
+   fp->_flags |= _IO_ERR_SEEN;
+ #elif defined __sferror || defined __DragonFly__ /* FreeBSD, NetBSD, OpenBSD, DragonFly, MacOS X, Cygwin */
+   fp_->_flags |= __SERR;
+
+diff -aur src/idutils-4.6/lib/stdio.in.h tst/idutils-4.6/lib/stdio.in.h
+--- src/idutils-4.6/lib/stdio.in.h	2012-01-28 10:26:05.000000000 -0600
++++ tst/idutils-4.6/lib/stdio.in.h	2020-04-20 00:00:00.000000000 -0500
+@@ -715,7 +715,7 @@
+ /* It is very rare that the developer ever has full control of stdin,
+    so any use of gets warrants an unconditional warning.  Assume it is
+    always declared, since it is required by C89.  */
+-_GL_WARN_ON_USE (gets, "gets is a security hole - use fgets instead");
++/* _GL_WARN_ON_USE (gets, "gets is a security hole - use fgets instead"); */
+ #endif
