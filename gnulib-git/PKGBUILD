@@ -1,0 +1,57 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=gnulib-git
+pkgver=0.1.r3355.5cdec0ff5
+pkgrel=1
+pkgdesc="A central location for common GNU code, intended to be shared among GNU packages."
+arch=('any')
+url="https://www.gnu.org/software/gnulib/"
+license=('GPL')
+groups=()
+depends=('bash' 'java-runtime' 'python')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git://git.savannah.gnu.org/gnulib.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+    make info
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	# make -k check
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+    # DESTDIR="$pkgdir/opt/${pkgname%-git}"
+
+    install -d "$pkgdir/opt/${pkgname%-git}"
+    install -t "$pkgdir/opt/${pkgname%-git}" check-module gnulib-tool gnulib-tool.py
+
+    for d in $(find build-aux doc lib m4 modules pygnulib tests top -type d); do
+        install -d "$pkgdir/opt/${pkgname%-git}/$d"
+        for f in $(find $d -maxdepth 1 -type f); do
+            install -m 644 -t "$pkgdir/opt/${pkgname%-git}/$d" $f
+        done
+    done
+
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/info"
+    ln -s "/opt/${pkgname%-git}/check-module" "$pkgdir/usr/bin"
+    ln -s "/opt/${pkgname%-git}/gnulib-tool" "$pkgdir/usr/bin"
+    ln -s "/opt/${pkgname%-git}/gnulib-tool.py" "$pkgdir/usr/bin"
+    ln -s "/opt/${pkgname%-git}/doc/gnulib.info" "$pkgdir/usr/share/info"
+}

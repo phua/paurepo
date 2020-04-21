@@ -1,0 +1,18 @@
+pkgbase = global
+	pkgdesc = A source code tagging system that works the same way across diverse environments.
+	pkgver = 6.6
+	pkgrel = 1
+	url = https://www.gnu.org/software/global/
+	arch = any
+	license = GPL
+	depends = libtool
+	depends = python
+	optdepends = bash: globash support
+	source = https://ftp.gnu.org/pub/gnu/global/global-6.6.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/global/global-6.6.tar.gz.sig
+	validpgpkeys = 7DBA3739EB138CA75E6CA55E2AF9977BDA5E41B1
+	md5sums = 518c71232cd6a75c99872c6917a81d0d
+	md5sums = 1f04d0444554a23bfd24d816bae4e162
+
+pkgname = global
+

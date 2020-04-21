@@ -1,0 +1,18 @@
+pkgbase = idutils
+	pkgdesc = An ID database is a binary file containing a list of file names, a list of tokens, and a sparse matrix indicating which tokens appear in which files.
+	pkgver = 4.6
+	pkgrel = 1
+	url = https://www.gnu.org/software/idutils/
+	arch = any
+	license = GPL
+	depends = bash
+	source = https://ftp.gnu.org/gnu/idutils/idutils-4.6.tar.xz
+	source = https://ftp.gnu.org/gnu/idutils/idutils-4.6.tar.xz.sig
+	source = idutils-4.6.patch
+	validpgpkeys = 155D3FC500C834486D1EEA677FD9FCCB000BEEEE
+	md5sums = 99b572536377fcddb4d38e86a3c215fd
+	md5sums = 84ba96a5d02ea3bbf8c5bb228950d5ea
+	md5sums = 76cba085a4c91c2985029ee6ec9bd7f4
+
+pkgname = idutils
+

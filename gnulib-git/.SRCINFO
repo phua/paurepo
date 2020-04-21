@@ -1,0 +1,18 @@
+pkgbase = gnulib-git
+	pkgdesc = A central location for common GNU code, intended to be shared among GNU packages.
+	pkgver = 0.1.r3355.5cdec0ff5
+	pkgrel = 1
+	url = https://www.gnu.org/software/gnulib/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = java-runtime
+	depends = python
+	provides = gnulib
+	conflicts = gnulib
+	source = git://git.savannah.gnu.org/gnulib.git
+	md5sums = SKIP
+
+pkgname = gnulib-git
+

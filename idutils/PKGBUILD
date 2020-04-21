@@ -1,0 +1,50 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=idutils
+pkgver=4.6
+pkgrel=1
+epoch=
+pkgdesc="An ID database is a binary file containing a list of file names, a list of tokens, and a sparse matrix indicating which tokens appear in which files."
+arch=('any')
+url="https://www.gnu.org/software/idutils/"
+license=('GPL')
+groups=()
+depends=('bash')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://ftp.gnu.org/gnu/idutils/idutils-4.6.tar.xz"
+        "https://ftp.gnu.org/gnu/idutils/idutils-4.6.tar.xz.sig"
+        "$pkgname-$pkgver.patch")
+noextract=()
+md5sums=("99b572536377fcddb4d38e86a3c215fd"
+         "84ba96a5d02ea3bbf8c5bb228950d5ea"
+         "76cba085a4c91c2985029ee6ec9bd7f4")
+validpgpkeys=("155D3FC500C834486D1EEA677FD9FCCB000BEEEE")
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch -p2 -i "$srcdir/$pkgname-$pkgver.patch"
+}
+
+build() {
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	# make -k check
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
+}
