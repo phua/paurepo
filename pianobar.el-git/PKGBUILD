@@ -1,0 +1,30 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=pianobar.el-git
+pkgver=r34.3154c4c
+pkgrel=1
+pkgdesc="A thin emacs interface for a Pandora Radio http://pandora.com/ command-line client."
+arch=('any')
+url="https://github.com/agrif/pianobar.el"
+license=('GPL')
+groups=()
+depends=()
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://github.com/agrif/pianobar.el.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "$srcdir/${pkgname%-git}"
+    install -Dt "$pkgdir/usr/share/emacs/site-lisp" ${pkgname%-git}
+}

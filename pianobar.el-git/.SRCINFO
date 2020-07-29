@@ -1,0 +1,15 @@
+pkgbase = pianobar.el-git
+	pkgdesc = A thin emacs interface for a Pandora Radio http://pandora.com/ command-line client.
+	pkgver = r34.3154c4c
+	pkgrel = 1
+	url = https://github.com/agrif/pianobar.el
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = pianobar.el
+	conflicts = pianobar.el
+	source = git+https://github.com/agrif/pianobar.el.git
+	md5sums = SKIP
+
+pkgname = pianobar.el-git
+
