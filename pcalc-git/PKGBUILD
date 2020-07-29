@@ -1,0 +1,40 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=pcalc-git
+pkgver=r84.d93be9e
+pkgrel=1
+pkgdesc="Command line util for doing hex/dec/oct/bin math quickly."
+arch=('any')
+url="https://github.com/vapier/pcalc"
+license=('GPL')
+groups=()
+depends=()
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://github.com/vapier/pcalc.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    make
+}
+
+check() {
+    cd "$srcdir/${pkgname%-git}"
+    make -k check
+}
+
+package() {
+    cd "$srcdir/${pkgname%-git}"
+    install -Dt "$pkgdir/usr/bin" "${pkgname%-git}"
+}

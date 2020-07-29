@@ -1,0 +1,15 @@
+pkgbase = pcalc-git
+	pkgdesc = Command line util for doing hex/dec/oct/bin math quickly.
+	pkgver = r84.d93be9e
+	pkgrel = 1
+	url = https://github.com/vapier/pcalc
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = pcalc
+	conflicts = pcalc
+	source = git+https://github.com/vapier/pcalc.git
+	md5sums = SKIP
+
+pkgname = pcalc-git
+
