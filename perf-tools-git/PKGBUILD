@@ -1,0 +1,30 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=perf-tools-git
+pkgver=r206.cb42511
+pkgrel=1
+pkgdesc="Performance analysis tools based on Linux perf_events (aka perf) and ftrace."
+arch=('any')
+url="https://github.com/brendangregg/perf-tools"
+license=('GPL')
+groups=()
+depends=()
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://github.com/brendangregg/perf-tools.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "$srcdir/${pkgname%-git}"
+    install -Dt "$pkgdir/usr/bin" execsnoop iolatency iosnoop killsnoop opensnoop syscount
+}

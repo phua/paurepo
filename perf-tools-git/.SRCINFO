@@ -1,0 +1,15 @@
+pkgbase = perf-tools-git
+	pkgdesc = Performance analysis tools based on Linux perf_events (aka perf) and ftrace.
+	pkgver = r206.cb42511
+	pkgrel = 1
+	url = https://github.com/brendangregg/perf-tools
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = perf-tools
+	conflicts = perf-tools
+	source = git+https://github.com/brendangregg/perf-tools.git
+	md5sums = SKIP
+
+pkgname = perf-tools-git
+
