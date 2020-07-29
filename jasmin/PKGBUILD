@@ -19,7 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.zip" "$pkgname")
+source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.zip"
+        "$pkgname")
 noextract=()
 md5sums=("e646257c6cdb4faf00aae096fb1949c1"
          "6f1149b27ceeeb22de65cdff77c40657")
