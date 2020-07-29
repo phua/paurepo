@@ -1,0 +1,14 @@
+arch-linux
+emacs
+gnulib-git/gnulib
+pcalc-git/pcalc
+perf-tools-git/perf-tools
+pianobar.el-git/pianobar.el
+
+*.tar.gz
+*.tar.gz.sig
+*.tar.xz
+*.tar.xz.sig
+*.zip
+pkg
+src

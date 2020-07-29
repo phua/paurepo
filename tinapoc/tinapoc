@@ -1,0 +1,4 @@
+#!/bin/sh
+
+CLASSPATH=$(\ls -1 /usr/share/java/tinapoc/*.jar | tr '\n' ':')${CLASSPATH}
+exec /usr/bin/java -cp ${CLASSPATH} "$@"
