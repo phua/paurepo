@@ -19,26 +19,27 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://ftp.gnu.org/pub/gnu/global/$pkgname-$pkgver.tar.gz"
-        "https://ftp.gnu.org/pub/gnu/global/$pkgname-$pkgver.tar.gz.sig")
+source=("https://ftp.gnu.org/pub/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
+        "https://ftp.gnu.org/pub/gnu/$pkgname/$pkgname-$pkgver.tar.gz.sig")
 noextract=()
-md5sums=("518c71232cd6a75c99872c6917a81d0d"
-         "1f04d0444554a23bfd24d816bae4e162")
+md5sums=("7bad75f960e7971b0e4052b763361300"
+         "SKIP")
 validpgpkeys=("7DBA3739EB138CA75E6CA55E2AF9977BDA5E41B1")
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+    cd "$pkgname-$pkgver"
+    make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
+    install -m 644 -Dt "$pkgdir/usr/share/emacs/site-lisp" "gtags.el"
     rm -rf "$pkgdir/usr/var/"
 }

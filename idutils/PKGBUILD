@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://ftp.gnu.org/gnu/idutils/idutils-4.6.tar.xz"
-        "https://ftp.gnu.org/gnu/idutils/idutils-4.6.tar.xz.sig"
+source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.xz"
+        "https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.xz.sig"
         "$pkgname-$pkgver.patch")
 noextract=()
 md5sums=("99b572536377fcddb4d38e86a3c215fd"
@@ -29,22 +29,22 @@ md5sums=("99b572536377fcddb4d38e86a3c215fd"
 validpgpkeys=("155D3FC500C834486D1EEA677FD9FCCB000BEEEE")
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p2 -i "$srcdir/$pkgname-$pkgver.patch"
+    cd "$pkgname-$pkgver"
+    patch -p2 -i "$srcdir/$pkgname-$pkgver.patch"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	# make -k check
+    cd "$pkgname-$pkgver"
+    # make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }

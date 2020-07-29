@@ -1,6 +1,6 @@
 pkgbase = gnulib-git
 	pkgdesc = A central location for common GNU code, intended to be shared among GNU packages.
-	pkgver = 0.1.r3355.5cdec0ff5
+	pkgver = 0.1.r3674.85307149d
 	pkgrel = 1
 	url = https://www.gnu.org/software/gnulib/
 	arch = any
