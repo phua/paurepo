@@ -1,0 +1,14 @@
+pkgbase = tinapoc
+	pkgdesc = A suite of tools meant to allow for the low-level manipulation of Java classes and Java Archive (JAR) files in a hostile environment.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://sourceforge.net/projects/tinapoc/
+	arch = any
+	license = Other
+	source = https://sourceforge.net/projects/tinapoc/files/tinapoc/0.4-alpha/tinapoc-0.4-alpha.zip
+	source = tinapoc
+	md5sums = cd523f00243ca17631b4fc7f4c53b249
+	md5sums = ae00ddc387beb4f935db6147c65dd1df
+
+pkgname = tinapoc
+

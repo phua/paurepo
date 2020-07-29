@@ -1,0 +1,32 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=tinapoc
+pkgver=0.4
+pkgrel=1
+epoch=
+pkgdesc="A suite of tools meant to allow for the low-level manipulation of Java classes and Java Archive (JAR) files in a hostile environment."
+arch=('any')
+url="https://sourceforge.net/projects/tinapoc/"
+license=('Other')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver-alpha/$pkgname-$pkgver-alpha.zip"
+        "$pkgname")
+noextract=()
+md5sums=("cd523f00243ca17631b4fc7f4c53b249"
+         "ae00ddc387beb4f935db6147c65dd1df")
+validpgpkeys=()
+
+package() {
+    install -m 644 -Dt "$pkgdir/usr/share/java/$pkgname" $(find bin -name "*.jar")
+    install -Dt "$pkgdir/usr/bin" "$srcdir/$pkgname"
+}
