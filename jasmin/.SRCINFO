@@ -1,0 +1,14 @@
+pkgbase = jasmin
+	pkgdesc = An assembler for the Java Virtual Machine.
+	pkgver = 2.4
+	pkgrel = 1
+	url = http://jasmin.sourceforge.net/
+	arch = any
+	license = Other
+	source = jasmin-2.4.zip
+	source = jasmin
+	md5sums = e646257c6cdb4faf00aae096fb1949c1
+	md5sums = 6f1149b27ceeeb22de65cdff77c40657
+
+pkgname = jasmin
+

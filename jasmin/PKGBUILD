@@ -1,0 +1,32 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=jasmin
+pkgver=2.4
+pkgrel=1
+epoch=
+pkgdesc="An assembler for the Java Virtual Machine."
+arch=('any')
+url="http://jasmin.sourceforge.net/"
+license=('Other')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.zip" "$pkgname")
+noextract=()
+md5sums=("e646257c6cdb4faf00aae096fb1949c1"
+         "6f1149b27ceeeb22de65cdff77c40657")
+validpgpkeys=()
+
+package() {
+    cd "$pkgname-$pkgver"
+    install -m 644 -Dt "$pkgdir/usr/share/java/$pkgname" "$pkgname.jar"
+    install -Dt "$pkgdir/usr/bin" "$srcdir/$pkgname"
+}
