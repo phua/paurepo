@@ -1,0 +1,36 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=chkrootkit
+pkgver=0.53
+pkgrel=1
+epoch=
+pkgdesc="A tool to locally check for signs of a rootkit."
+arch=('any')
+url="http://www.chkrootkit.org/"
+license=('GPL')
+groups=()
+depends=('sh')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("ftp://ftp.pangeia.com.br/pub/seg/pac/$pkgname.tar.gz")
+noextract=()
+md5sums=("944c529c4846960bdede4be49ef66386")
+validpgpkeys=()
+
+build() {
+    cd "$pkgname-$pkgver"
+    make sense
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    install -Dt "$pkgdir/usr/bin" chkrootkit chklastlog chkwtmp ifpromisc chkproc chkdirs strings-static chkutmp
+
+}

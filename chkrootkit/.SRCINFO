@@ -1,0 +1,13 @@
+pkgbase = chkrootkit
+	pkgdesc = A tool to locally check for signs of a rootkit.
+	pkgver = 0.53
+	pkgrel = 1
+	url = http://www.chkrootkit.org/
+	arch = any
+	license = GPL
+	depends = sh
+	source = ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz
+	md5sums = 944c529c4846960bdede4be49ef66386
+
+pkgname = chkrootkit
+
