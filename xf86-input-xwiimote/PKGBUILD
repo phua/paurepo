@@ -1,0 +1,48 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=xf86-input-xwiimote-git
+pkgver=0.5.r8.827323e
+pkgrel=1
+pkgdesc="X.Org input driver for Nintendo Wii Remotes."
+arch=('x86_64')
+url="https://dvdhrm.github.io/xwiimote/"
+license=('GPL')
+groups=()
+depends=('xwiimote')
+makedepends=('git' 'xorg-util-macros' 'xorg-server-devel')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=('etc/X11/xorg.conf.d/60-xorg-xwiimote.conf')
+options=()
+install=
+source=('git+https://github.com/dvdhrm/xf86-input-xwiimote.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --long | sed 's/^xf86-input-xwiimote-//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    ./autogen.sh --prefix=/usr
+}
+
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    ./configure --prefix=/usr
+    make
+}
+
+check() {
+    cd "$srcdir/${pkgname%-git}"
+    make -k check
+}
+
+package() {
+    cd "$srcdir/${pkgname%-git}"
+    make DESTDIR="$pkgdir/" install
+    # libtool --finish /usr/lib
+    install -m 644 -Dt "$pkgdir/etc/X11/xorg.conf.d" "60-xorg-xwiimote.conf"
+}

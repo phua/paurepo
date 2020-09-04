@@ -1,0 +1,49 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=xwiimote-git
+pkgver=2.r28.f2be57e
+pkgrel=1
+pkgdesc="Open-source linux device driver for Nintendo Wii Remotes."
+arch=('x86_64')
+url="https://dvdhrm.github.io/xwiimote/"
+license=('GPL')
+groups=()
+depends=('linux>=3.11' 'bluez>=5.0')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=('etc/X11/xorg.conf.d/50-xorg-fix-xwiimote.conf')
+options=()
+install=
+source=('git+https://github.com/dvdhrm/xwiimote.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --long | sed 's/^xwiimote-//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    ./autogen.sh --prefix=/usr
+}
+
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    ./configure --prefix=/usr
+    make
+}
+
+check() {
+    cd "$srcdir/${pkgname%-git}"
+    make -k check
+}
+
+package() {
+    cd "$srcdir/${pkgname%-git}"
+    make DESTDIR="$pkgdir/" install
+    # libtool --finish /usr/lib
+    install -m 755 -Dt "$pkgdir/usr/bin" "xwiidump"
+    install -m 644 -Dt "$pkgdir/etc/X11/xorg.conf.d" "res/50-xorg-fix-xwiimote.conf"
+}
