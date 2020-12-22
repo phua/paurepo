@@ -1,0 +1,17 @@
+pkgbase = bear-git
+	pkgdesc = A tool that generates a compilation database for clang tooling.
+	pkgver = r917.ae9ea02
+	pkgrel = 1
+	url = https://github.com/rizsotto/Bear
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = zlib
+	provides = bear
+	conflicts = bear
+	source = git+https://github.com/rizsotto/Bear.git
+	md5sums = SKIP
+
+pkgname = bear-git
+
