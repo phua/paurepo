@@ -1,0 +1,15 @@
+pkgbase = jdt-language-server
+	pkgdesc = A Java language specific implementation of the Language Server Protocol.
+	pkgver = 1.13.0_202206301721
+	pkgrel = 1
+	url = https://github.com/eclipse/eclipse.jdt.ls
+	arch = any
+	license = EPL
+	depends = java-runtime
+	depends = python
+	source = https://download.eclipse.org/jdtls/milestones/1.13.0/jdt-language-server-1.13.0-202206301721.tar.gz
+	source = https://download.eclipse.org/jdtls/milestones/1.13.0/jdt-language-server-1.13.0-202206301721.tar.gz.sha256
+	sha256sums = 5a29ad28d765f408106a87b147b239696942a11f22f950c52dc37176fce9cfc9
+	sha256sums = SKIP
+
+pkgname = jdt-language-server

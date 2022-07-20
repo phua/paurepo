@@ -1,0 +1,39 @@
+# Maintainer: Peter Hua <phua@users.noreply.github.com>
+pkgname=jdt-language-server
+pkgver=1.13.0_202206301721
+pkgrel=1
+epoch=
+pkgdesc="A Java language specific implementation of the Language Server Protocol."
+arch=('any')
+url="https://github.com/eclipse/eclipse.jdt.ls"
+license=('EPL')
+groups=()
+depends=('java-runtime' 'python')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://download.eclipse.org/jdtls/milestones/${pkgver%_*}/${pkgname}-${pkgver//_/-}.tar.gz"
+        "https://download.eclipse.org/jdtls/milestones/${pkgver%_*}/${pkgname}-${pkgver//_/-}.tar.gz.sha256")
+noextract=()
+_sha256sum() {
+    # cat "${pkgname}-${pkgver//_/-}.tar.gz.sha256"
+    curl --silent "https://download.eclipse.org/jdtls/milestones/${pkgver%_*}/${pkgname}-${pkgver//_/-}.tar.gz.sha256"
+}
+sha256sums=("$(_sha256sum)"
+            "SKIP")
+validpgpkeys=()
+
+package() {
+    DESTDIR="${pkgdir}/usr/share/java/${pkgname}"
+    mkdir -p "${DESTDIR}" "${pkgdir}/usr/bin"
+    cp -r -t "${DESTDIR}" $(eval echo "${srcdir}/{bin,config_linux,config_ss_linux,features,plugins}")
+    # ln -s --relative -t "${pkgdir}/usr/bin" $(eval echo "${DESTDIR}/bin/jdtls{,.py}")
+    ln -s --relative -t "${pkgdir}/usr/bin" "${DESTDIR}/bin/jdtls"
+}
